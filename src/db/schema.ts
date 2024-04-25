@@ -102,7 +102,7 @@ export const questions = pgTable("questions", {
   fieldType: formElements("field_type"),
   formId: integer("form_id"),
 });
-export const questionsRelations = relations(questions, ({ many, one }) => ({
+export const questionsRelations = relations(questions, ({ one, many }) => ({
   form: one(forms, {
     fields: [questions.formId],
     references: [forms.id],
@@ -117,8 +117,8 @@ export const fieldOptions = pgTable("field_options", {
   questionId: integer("question_id"),
 });
 
-export const fieldOptionsRelation = relations(fieldOptions, ({ one }) => ({
-  questions: one(questions, {
+export const fieldOptionsRelations = relations(fieldOptions, ({ one }) => ({
+  question: one(questions, {
     fields: [fieldOptions.questionId],
     references: [questions.id],
   }),
