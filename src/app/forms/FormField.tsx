@@ -14,7 +14,7 @@ import {
   FieldOptionsSelectModel,
   QuestionSelectModel,
 } from "@/types/form-types";
-import { FormControl, FormLabel } from "@/components/ui/form";
+import { FormControl } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 
 interface FormFieldProps {
@@ -39,7 +39,7 @@ const FormField = ({ element, value, onChange }: FormFieldProps) => {
         <SelectContent>
           {element.fieldOptions.map((option, index) => (
             <SelectItem
-              key={`${option.text}_${option.value}`}
+              key={`${option.text} ${option.value}`}
               value={`answerId_${option.id}`}
             >
               {option.text}
@@ -52,7 +52,7 @@ const FormField = ({ element, value, onChange }: FormFieldProps) => {
       <RadioGroup onValueChange={onChange}>
         {element.fieldOptions.map((option, index) => (
           <div
-            key={`${option.text}_${option.value}`}
+            key={`${option.text} ${option.value}`}
             className="flex items-center space-x-2"
           >
             <FormControl>
@@ -63,7 +63,7 @@ const FormField = ({ element, value, onChange }: FormFieldProps) => {
                 {option.text}
               </RadioGroupItem>
             </FormControl>
-            <Label>{option.text}</Label>
+            <Label className="text-base">{option.text}</Label>
           </div>
         ))}
       </RadioGroup>
