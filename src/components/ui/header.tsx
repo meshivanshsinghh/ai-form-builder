@@ -29,6 +29,9 @@ const Header: FC<HeaderProps> = async ({}) => {
           <h1>AI Form Builder</h1>
           {session?.user ? (
             <div className="flex items-center gap-4">
+              <Link href="/view-forms">
+                <Button variant="outline">Dashboard</Button>
+              </Link>
               {session.user.name && session.user.image && (
                 <Image
                   src={session.user.image}
